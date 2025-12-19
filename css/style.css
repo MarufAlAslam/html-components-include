@@ -1,0 +1,65 @@
+/* Base styles */
+:root{
+	--accent:#5b8cff;
+	--muted:#6c757d;
+}
+
+html,body{
+	height:100%;
+}
+
+body{
+	font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: linear-gradient(180deg,#f6f9fc,#ffffff);
+	color:#212529;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+main{ min-height:100vh; display:flex; align-items:center; }
+
+/* Hero layout */
+.hero{ background: linear-gradient(180deg, rgba(255,255,255,0.95), #ffffff); overflow:hidden; }
+.hero-illustration{ max-width:320px; transition:transform .45s ease; }
+.hero-illustration:hover{ transform:translateY(-6px); }
+
+/* Decorative shapes */
+.shape{ position:absolute; pointer-events:none; }
+.shape-1{ right:-60px; top:-40px; width:220px; height:220px; background: radial-gradient(circle at 30% 30%, rgba(91,140,255,0.14), transparent 40%); border-radius:50%; filter:blur(12px); }
+.shape-2{ left:-40px; bottom:-40px; width:160px; height:160px; background: radial-gradient(circle at 70% 70%, rgba(124,224,198,0.12), transparent 40%); border-radius:50%; filter:blur(10px); }
+
+/* Header fragment tweaks */
+.site-header .container{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	padding:1rem 0;
+}
+.site-header h1{ margin:0; font-size:1.25rem; font-weight:600; }
+.site-header nav a{ margin-left:1rem; color:var(--muted); text-decoration:none; font-weight:500; }
+.site-header nav a:hover{ color:var(--accent); }
+
+/* Footer fragment tweaks */
+.site-footer{ padding:1.25rem 0; color:var(--muted); font-size:0.95rem; }
+
+/* Hero card */
+.hero{ border-radius:14px; }
+
+/* Product card */
+.product-card{ background:linear-gradient(180deg, #fff, #fbfdff); }
+.product-price{ color:var(--accent); font-weight:700; }
+.rating{ letter-spacing:0.5px; }
+
+/* Header small tweaks */
+.site-header .input-group .form-control{ border-top-left-radius:18px; border-bottom-left-radius:18px; }
+.site-header .input-group .btn{ border-top-right-radius:18px; border-bottom-right-radius:18px; }
+
+@media (max-width:767px){
+	.site-header .logo .h5{ font-size:1rem; }
+	.hero{ padding:1.25rem; }
+}
+
+@media (min-width:768px){
+	.hero{ padding:2.5rem; }
+	.hero-illustration{ max-width:380px; }
+}
