@@ -1,0 +1,244 @@
+:root {
+    --header-dark: #333438;
+    --accent-lime: #cbe83b;
+    --muted: #6c757d;
+}
+
+/* thin dark strip on top */
+.topbar {
+    height: 28px;
+    background: var(--header-dark);
+}
+
+.site-header-main {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding-top: .35rem;
+    padding-bottom: .35rem;
+}
+
+.site-header-main .container {
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* enforce sensible flex behavior so items don't wrap */
+.site-header-main .logo-wrap {
+    flex: 0 0 auto;
+}
+
+.site-header-main nav {
+    flex: 0 0 auto;
+}
+
+.site-header-main .btn-catalog {
+    flex: 0 0 auto;
+}
+
+.site-header-main .search-wrap {
+    flex: 1 1 640px;
+    min-width: 180px;
+}
+
+.site-header-main .ms-auto {
+    flex: 0 0 auto;
+}
+
+.logo-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 25px;
+    object-fit: cover;
+}
+
+/* Nav */
+.site-header-main nav a,
+.site-header-main .megamenu-toggle,
+.site-header-main nav>a {
+    color: #111;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 4px 6px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+}
+
+.megamenu-panel a {
+    padding-left: 0 !important;
+}
+
+.site-header-main nav a:hover,
+.site-header-main .megamenu-toggle:hover,
+.site-header-main nav>a:hover {
+    color: var(--accent-lime);
+    border-bottom-color: var(--accent-lime);
+}
+
+/* ensure the megamenu toggle looks like the links */
+.megamenu-toggle {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+/* Catalog pill */
+.btn-catalog {
+    background: var(--accent-lime);
+    color: #fff;
+    border-radius: 24px;
+    padding: 8px 14px;
+    font-weight: 700;
+    border: none;
+    font-size: 14px;
+}
+
+/* Search pill */
+.search-pill .form-control {
+    border-radius: 24px 0 0 24px;
+    height: 44px;
+    border-right: 0;
+}
+
+.search-pill .btn {
+    border-radius: 0 24px 24px 0;
+    background: transparent;
+    border: 1px solid #e6e6e6;
+    height: 44px;
+}
+
+.search-pill .form-control::placeholder {
+    color: #9aa0a6;
+}
+
+.phone {
+    font-weight: 700;
+    color: var(--accent-lime);
+    font-size: 15px;
+}
+
+@media (max-width:991px) {
+
+    .site-header-main nav,
+    .btn-catalog,
+    .phone {
+        display: none !important;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .topbar {
+        height: 24px;
+    }
+}
+
+/* Mega menu styles */
+.megamenu {
+    position: relative;
+}
+
+.megamenu-toggle {
+    color: #222;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.megamenu-panel {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    width: 600px;
+    max-width: 600px;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 8px 24px rgba(18, 23, 39, 0.08);
+    padding: 12px 14px;
+    display: none;
+    z-index: 1200;
+}
+
+.megamenu.open .megamenu-panel {
+    display: block;
+}
+
+.megamenu-panel ul {
+    margin: 0;
+    padding: 0;
+}
+
+.megamenu-panel li {
+    list-style: none;
+    margin: 6px 0;
+}
+
+.megamenu-panel a {
+    color: #222;
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 0;
+    font-weight: 600;
+    text-transform: none;
+}
+
+.megamenu-panel a:hover {
+    color: var(--accent-lime);
+}
+
+.megamenu-inner {
+    padding: 2px 8px;
+}
+
+/* headings inside megamenu */
+.megamenu-panel .text-success {
+    color: var(--accent-lime);
+    font-weight: 700;
+}
+
+.megamenu-panel .text-muted {
+    color: #7a7a7a;
+    font-weight: 600;
+}
+
+/* column layout tweaks */
+.megamenu-panel .row {
+    margin: 0;
+}
+
+.megamenu-panel .col-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* small screens: full width dropdown under header */
+@media (max-width:991px) {
+    .megamenu-panel {
+        position: static;
+        transform: none;
+        width: auto;
+        max-width: none;
+        display: none;
+    }
+
+    .megamenu.open .megamenu-panel {
+        display: block;
+    }
+
+    .megamenu-toggle {
+        display: flex;
+        align-items: center;
+    }
+}
