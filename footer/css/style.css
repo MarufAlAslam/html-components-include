@@ -1,0 +1,169 @@
+:root {
+    --footer-dark: #2f2f30;
+    --accent-lime: #cbe83b;
+    --footer-lime: #cde33b;
+    --muted: #6c757d;
+}
+
+.fab {
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 400;
+}
+
+.badge-col,
+.contact-col {
+    width: 20%;
+}
+
+.social-col {
+    width: 60%;
+}
+
+.footer-topbar .container.d-flex {
+    justify-content: center !important;
+    display: flex;
+    gap: 30px;
+}
+
+/* Top newsletter strip */
+.footer-topbar {
+    background: var(--footer-dark);
+    color: #fff;
+    padding: 18px 0;
+}
+
+.footer-topbar .mail-icon {
+    height: 48px;
+    width: auto;
+    display: inline-block;
+}
+
+.footer-topbar .newsletter-text {
+    font-size: 1.05rem;
+    opacity: 0.95;
+}
+
+.btn-signup {
+    background: var(--accent-lime);
+    color: #fff;
+    border-radius: 40px;
+    padding: 14px 44px;
+    font-weight: 800;
+    border: 0;
+    box-shadow: none;
+}
+
+/* Main footer */
+.site-footer {
+    background: var(--footer-lime);
+    color: #111;
+    padding: 60px 0 28px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 36px;
+}
+
+.footer-nav {
+    margin: 28px 0;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.footer-nav a {
+    color: #222;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.footer-bottom {
+    margin-top: 36px;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.badge-col .badge-img {
+    width: 140px;
+    height: auto;
+    display: block;
+}
+
+.badge-col {
+    display: flex;
+    align-items: flex-start;
+}
+
+.social-col {
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: #111;
+    border-radius: 50%;
+    color: var(--accent-lime);
+    text-decoration: none;
+}
+
+.social i {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.social img {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+.contact-col {
+    font-weight: 700;
+    text-align: right;
+}
+
+.contact-col .muted {
+    font-weight: 600;
+    color: #222;
+    opacity: 0.9;
+}
+
+@media(max-width:991px) {
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-col {
+        text-align: center;
+    }
+
+    .badge-col {
+        margin-bottom: 18px;
+    }
+}

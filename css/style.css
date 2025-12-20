@@ -16,7 +16,7 @@ body{
 	-moz-osx-font-smoothing:grayscale;
 }
 
-main{ min-height:100vh; display:flex; align-items:center; }
+main{ min-height:60vh; display:flex; align-items:center; }
 
 /* Hero layout */
 .hero{ background: linear-gradient(180deg, rgba(255,255,255,0.95), #ffffff); overflow:hidden; }
