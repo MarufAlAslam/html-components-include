@@ -127,12 +127,68 @@
     font-size: 15px;
 }
 
-@media (max-width:991px) {
+/* phone icon for small/medium widths */
+.phone-icon {
+    display: none;
+    color: var(--accent-lime);
+    font-size: 18px;
+    text-decoration: none;
+}
 
-    .site-header-main nav,
-    .btn-catalog,
+.phone-icon i {
+    font-size: 18px;
+}
+
+@media (max-width:1199px) {
+    /* below 1200 hide search (already set) and show phone icon below 1070 handled separately */
+}
+
+@media (max-width:1070px) {
     .phone {
         display: none !important;
+    }
+
+    .phone-icon {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width:991px) {
+
+    /* stack header for tablet: logo centered, search full width, catalog visible */
+    .site-header-main .container {
+        flex-wrap: wrap;
+        padding: .4rem 12px;
+    }
+
+    .site-header-main .logo-wrap {
+        flex: 0 0 100%;
+        justify-content: center;
+        margin-bottom: .5rem;
+    }
+
+    .site-header-main nav {
+        display: none !important;
+    }
+
+    .btn-catalog {
+        display: inline-block !important;
+        order: 2;
+        margin: 6px auto;
+    }
+
+    .phone {
+        display: none !important;
+    }
+
+    .search-wrap {
+        order: 3;
+        flex: 1 1 100%;
+        min-width: 0;
+        width: 100%;
+        margin-bottom: .5rem;
     }
 
     .logo-text {
@@ -141,6 +197,38 @@
 
     .topbar {
         height: 24px;
+    }
+}
+
+@media (max-width:575px) {
+
+    /* mobile: compact header */
+    .site-header-main .container {
+        padding: .35rem .6rem;
+    }
+
+    .site-header-main .logo-wrap {
+        margin-bottom: .35rem;
+    }
+
+    .btn-catalog {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .search-pill .form-control {
+        height: 44px;
+    }
+
+    .logo-img {
+        height: 36px;
+    }
+}
+
+/* hide search under 1200px as requested */
+@media (max-width:1199px) {
+    .search-wrap {
+        display: none !important;
     }
 }
 
@@ -240,5 +328,44 @@
     .megamenu-toggle {
         display: flex;
         align-items: center;
+    }
+
+    .mobile-nav-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    span.bar {
+        height: 2px;
+        width: 20px;
+        display: block;
+        background: black;
+        border-radius: 10px;
+    }
+
+    .site-header-main .logo-wrap {
+        flex: 0 0 auto;
+    }
+}
+
+/* mobile hamburger button */
+.mobile-nav-toggle {
+    font-size: 20px;
+    color: #222;
+    border: 0;
+    background: transparent;
+}
+
+/* adjust offcanvas width on larger small screens */
+@media (min-width:576px) {
+    .offcanvas.offcanvas-start {
+        width: 320px;
+    }
+}
+
+@media (max-width:575px) {
+    .offcanvas.offcanvas-start {
+        width: 260px;
     }
 }
