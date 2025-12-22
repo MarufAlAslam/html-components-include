@@ -56,6 +56,8 @@
 
 .logo-img {
     height: 25px;
+    position: relative;
+    top: -5px;
     object-fit: cover;
 }
 
@@ -64,8 +66,8 @@
 .site-header-main .megamenu-toggle,
 .site-header-main nav>a {
     color: #111;
-    font-weight: 700;
-    font-size: 0.95rem;
+    /* font-weight: 700; */
+    font-size: 14px;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.4px;
@@ -98,7 +100,7 @@
     color: #fff;
     border-radius: 24px;
     padding: 8px 14px;
-    font-weight: 700;
+    font-weight: 600;
     border: none;
     font-size: 14px;
 }
@@ -121,10 +123,26 @@
     color: #9aa0a6;
 }
 
+/* Make search pill show lime border on hover and when focused (match nav hover) */
+.search-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 24px;
+    transition: border-color .12s ease, box-shadow .12s ease;
+}
+
+.search-pill:hover .form-control,
+.search-pill:focus-within .form-control,
+.search-pill:hover .btn,
+.search-pill:focus-within .btn {
+    border-color: var(--accent-lime);
+    box-shadow: 0 0 0 3px rgba(203, 232, 59, 0.08);
+}
+
 .phone {
     font-weight: 700;
-    color: var(--accent-lime);
-    font-size: 15px;
+    color: var(--accent-lime) !important;
+    font-size: 14px;
 }
 
 /* phone icon for small/medium widths */
@@ -239,7 +257,7 @@
 
 .megamenu-toggle {
     color: #222;
-    font-weight: 700;
+    /* font-weight: 700; */
     border: none;
     background: transparent;
     padding: 0;
@@ -292,7 +310,7 @@
 
 /* headings inside megamenu */
 .megamenu-panel .text-success {
-    color: var(--accent-lime);
+    color: var(--accent-lime) !important;
     font-weight: 700;
 }
 
