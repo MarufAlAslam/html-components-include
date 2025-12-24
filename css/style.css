@@ -502,6 +502,46 @@ button.btn.btn-sm.thumb-nav-right {
     color: var(--muted);
 }
 
+@media (max-width: 768px) {
+    main.container-fluid.p-5 {
+        padding: 20px !important;
+    }
+
+    .row.g-4 {
+        width: 100%;
+        margin: auto;
+    }
+
+    .main-slider .img-wrap,
+    .main-slider .swiper-slide {
+        height: auto !important;
+    }
+
+    .main-slider .swiper-slide {
+        flex: 0 0 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: auto;
+        box-sizing: border-box;
+    }
+
+    .price-table.mb-3 {
+        overflow-x: auto !important;
+        width: 100% !important;
+    }
+
+    .product-icons-band .d-flex {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px;
+    }
+
+    .product-icons-band .icon-btn+.icon-btn {
+        border-left: unset;
+    }
+}
+
 @media (max-width: 576px) {
     .product-icons-band .icon-btn img {
         width: 46px;

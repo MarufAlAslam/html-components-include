@@ -564,6 +564,24 @@ div#newsletterModal {
     display: none;
 }
 
+
+@media screen and (max-width: 1400px) {
+
+    .slider-nav-left,
+    .slider-nav-right {
+        position: absolute;
+        bottom: 120px;
+    }
+
+    .slider-nav-left {
+        left: 12px;
+    }
+
+    .slider-nav-right {
+        right: 12px;
+    }
+}
+
 @media print {
     body {
         -webkit-print-color-adjust: exact;
