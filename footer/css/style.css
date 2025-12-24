@@ -339,8 +339,18 @@ div#newsletterModal {
 }
 
 /* Quote modal (reuses newsletter modal styles but adapts layout) */
-.modal-quote .modal-dialog { max-width: 820px; }
-.modal-quote .modal-content { border: none; border-radius: 6px; background: #fff; box-shadow: 0 20px 50px rgba(13,13,13,0.12); position: relative; }
+.modal-quote .modal-dialog {
+    max-width: 820px;
+}
+
+.modal-quote .modal-content {
+    border: none;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(13, 13, 13, 0.12);
+    position: relative;
+}
+
 .modal-quote .custom-close,
 .modal-artwork .custom-close,
 .modal-sample .custom-close {
@@ -353,9 +363,9 @@ div#newsletterModal {
     right: -28px;
     z-index: 2100;
     padding: 0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-quote .custom-close::after,
@@ -368,58 +378,197 @@ div#newsletterModal {
 
 /* allow the large close button to overlap outside the modal */
 .modal-quote .modal-content,
-.modal-artwork .modal-content { overflow: visible; }
-
-.modal-quote .modal-body { padding: 36px 28px; }
-.modal-quote h3 { font-weight: 800; letter-spacing: .6px; margin-bottom: 18px; }
-
-.modal-quote .form-wrapper { max-width: 100%; }
-.modal-quote .form-control, .modal-quote .form-select {
-    height: 48px; padding: 8px 12px; border: 1px solid #e6e6e6; font-size: 0.95rem; outline: none;
+.modal-artwork .modal-content {
+    overflow: visible;
 }
-.modal-quote .form-control::placeholder { text-transform: uppercase; font-size: 0.8rem; color: #9aa0a6; letter-spacing: .6px; }
+
+.modal-quote .modal-body {
+    padding: 36px 28px;
+}
+
+.modal-quote h3 {
+    font-weight: 800;
+    letter-spacing: .6px;
+    margin-bottom: 18px;
+}
+
+.modal-quote .form-wrapper {
+    max-width: 100%;
+}
+
+.modal-quote .form-control,
+.modal-quote .form-select {
+    height: 48px;
+    padding: 8px 12px;
+    border: 1px solid #e6e6e6;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.modal-quote .form-control::placeholder {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #9aa0a6;
+    letter-spacing: .6px;
+}
+
 .modal-quote .btn-quote-submit {
-    background: var(--accent-lime); color: #fff; border: none; height: 48px; font-weight: 700; width: 100%;
+    background: var(--accent-lime);
+    color: #fff;
+    border: none;
+    height: 48px;
+    font-weight: 700;
+    width: 100%;
 }
-.modal-quote .btn-quote-submit:active, .modal-quote .btn-quote-submit:focus { box-shadow: none; }
+
+.modal-quote .btn-quote-submit:active,
+.modal-quote .btn-quote-submit:focus {
+    box-shadow: none;
+}
 
 /* artwork submit should also be full width */
-.modal-artwork .btn-quote-submit { width: 100%; }
+.modal-artwork .btn-quote-submit {
+    width: 100%;
+}
 
 @media (max-width: 576px) {
-    .modal-quote .modal-body { padding: 20px; }
-    .modal-quote .custom-close { width: 48px; height: 48px; }
-    .modal-sample .custom-close { width: 48px; height: 48px; }
+    .modal-quote .modal-body {
+        padding: 20px;
+    }
+
+    .modal-quote .custom-close {
+        width: 48px;
+        height: 48px;
+    }
+
+    .modal-sample .custom-close {
+        width: 48px;
+        height: 48px;
+    }
 }
 
 /* Artwork modal specific tweaks */
-.modal-artwork .file-upload-label { height:48px; padding: 8px 12px; border: 1px solid #e6e6e6; display:flex; align-items:center; justify-content:space-between; background: #fff; cursor: pointer; }
-.modal-artwork .file-upload-label .upload-icon { background: var(--accent-lime); color: #fff; width:36px; height:36px; border-radius: 50%; display:inline-flex; align-items:center; justify-content:center; font-size:18px; }
-.modal-artwork .file-upload-label .filename { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display:block; }
-.modal-artwork .file-upload { width: 100%; }
-.modal-artwork .modal-body { padding: 36px 28px; }
-.modal-artwork .btn-quote-submit { background: var(--accent-lime); color: #fff; }
+.modal-artwork .file-upload-label {
+    height: 48px;
+    padding: 8px 12px;
+    border: 1px solid #e6e6e6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    cursor: pointer;
+}
+
+.modal-artwork .file-upload-label .upload-icon {
+    background: var(--accent-lime);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.modal-artwork .file-upload-label .filename {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+.modal-artwork .file-upload {
+    width: 100%;
+}
+
+.modal-artwork .modal-body {
+    padding: 36px 28px;
+}
+
+.modal-artwork .btn-quote-submit {
+    background: var(--accent-lime);
+    color: #fff;
+}
 
 /* Sample modal tweaks */
-.modal-sample .modal-body { padding: 36px 28px; }
-.modal-sample h3 { font-weight: 800; margin-bottom: 14px; }
-.modal-sample h4 { font-weight: 700; margin-top: 10px; color: #222; }
-.modal-sample textarea.form-control { min-height: 120px; }
-.modal-sample .btn-quote-submit { background: var(--accent-lime); color: #fff; width: 100%; }
+.modal-sample .modal-body {
+    padding: 36px 28px;
+}
+
+.modal-sample h3 {
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.modal-sample h4 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: #222;
+}
+
+.modal-sample textarea.form-control {
+    min-height: 120px;
+}
+
+.modal-sample .btn-quote-submit {
+    background: var(--accent-lime);
+    color: #fff;
+    width: 100%;
+}
 
 /* Spec sheet modal styles */
-.modal-specsheet .modal-dialog { max-width: 1100px; }
-.modal-specsheet .spec-title { font-weight: 800; font-size: 1.25rem; }
-.modal-specsheet .spec-desc { max-width: 540px; }
-.modal-specsheet .spec-swatches span { width:18px; height:18px; border-radius:50%; display:inline-block; border:1px solid #eee; }
-.modal-specsheet .spec-price-table { margin-top: 8px; }
-.modal-specsheet h6 { font-weight:700; letter-spacing:.4px; }
-.modal-specsheet .btn-quote-submit { background: var(--accent-lime); color:#fff; border:none; padding: 10px 22px; font-weight:700; }
-.modal-specsheet .spec-image { min-height: 320px; }
-.modal-specsheet .spec-print { display:none; }
+.modal-specsheet .modal-dialog {
+    max-width: 1100px;
+}
+
+.modal-specsheet .spec-title {
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.modal-specsheet .spec-desc {
+    max-width: 540px;
+}
+
+.modal-specsheet .spec-swatches span {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #eee;
+}
+
+.modal-specsheet .spec-price-table {
+    margin-top: 8px;
+}
+
+.modal-specsheet h6 {
+    font-weight: 700;
+    letter-spacing: .4px;
+}
+
+.modal-specsheet .btn-quote-submit {
+    background: var(--accent-lime);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    font-weight: 700;
+}
+
+.modal-specsheet .spec-image {
+    min-height: 320px;
+}
+
+.modal-specsheet .spec-print {
+    display: none;
+}
 
 @media print {
-  body { -webkit-print-color-adjust: exact; }
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 }
 
 
