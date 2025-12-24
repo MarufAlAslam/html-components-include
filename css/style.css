@@ -178,12 +178,20 @@ main {
 .main-slider {
     width: 100%;
     overflow: hidden;
+    /* allow vertical page scrolling while disabling horizontal touch scrolling */
+    touch-action: pan-y;
+    cursor: grab;
+}
+
+.main-slider.grabbing {
+    cursor: grabbing;
 }
 
 .main-slider .swiper-wrapper {
     display: flex;
     width: 100%;
     transition: transform .36s ease;
+    will-change: transform;
 }
 
 .swiper.thumb-slider .swiper-wrapper {
@@ -230,6 +238,35 @@ main {
     gap: 12px;
 }
 
+.slider-nav-row .flex-fill {
+    position: relative;
+}
+
+.thumb-nav-left,
+.thumb-nav-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    z-index: 5;
+}
+
+.thumb-nav-left {
+    left: 6px;
+}
+
+.thumb-nav-right {
+    right: 6px;
+}
+
 .slider-nav-left,
 .slider-nav-right {
     width: 44px;
@@ -238,10 +275,16 @@ main {
     background: transparent;
     border: 1px solid transparent;
     color: var(--accent-2);
-    font-size: 22px;
+    font-size: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #bdd63d !important;
+}
+
+button.btn.btn-sm.thumb-nav-left,
+button.btn.btn-sm.thumb-nav-right {
+    display: none;
 }
 
 .slider-nav-left:hover,
@@ -251,19 +294,33 @@ main {
 
 .thumb-slider {
     width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.thumb-slider .swiper-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 2px;
 }
 
 .thumb-slider .swiper-slide {
+    flex: 0 0 auto;
     width: 100px;
     height: auto;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #f0f0f0;
     border-radius: 4px;
     background: #fff;
-    margin-right: 10px;
     box-sizing: border-box;
+    padding: 6px;
+}
+
+.swiper-slide.thumb.active {
+    border: 2px solid #bdd63d;
 }
 
 .thumb-slider .swiper-slide img {
