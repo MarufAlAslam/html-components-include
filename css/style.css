@@ -215,6 +215,10 @@ main {
     color: var(--accent-2) !important;
 }
 
+.modal {
+    backdrop-filter: blur(10px);
+}
+
 /* Header small tweaks */
 .site-header .input-group .form-control {
     border-top-left-radius: 18px;
@@ -360,8 +364,25 @@ main {
     left: 6px;
 }
 
+.custom-close.bg-transparent {
+    width: 50px !important;
+    height: 50px !important;
+    top: 5px !important;
+    right: 5px !important;
+    font-size: 24px !important;
+}
+
+.custom-close.bg-transparent::after {
+    font-size: 28px !important;
+}
+
 .thumb-nav-right {
     right: 6px;
+}
+
+.modal-artwork .file-upload-label {
+    /* height: 38px !important; */
+    border-radius: 8px;
 }
 
 .slider-nav-left,

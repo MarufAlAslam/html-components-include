@@ -170,4 +170,133 @@ document.addEventListener('DOMContentLoaded', function () {
     s.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') s.click(); });
   });
   const active = document.querySelector('.swatch.active'); if (active) applyTint(active.dataset.color || '');
+
+  // Quote form submit handling (prevent full page submit and show success)
+  const quoteForm = document.querySelector('.quote-form');
+  if (quoteForm) {
+    quoteForm.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      const modalEl = document.getElementById('modal-icon-1');
+      // Replace form with a simple thank you message
+      const wrapper = modalEl.querySelector('.form-wrapper');
+      if (wrapper) {
+        wrapper.innerHTML = '<div class="text-center" style="padding:40px 10px;"><h4 style="font-weight:700;">Thanks — Request Received</h4><p class="text-muted">We\'ll get back to you shortly about your quote request.</p></div>';
+      }
+      // close modal after small delay
+      setTimeout(() => {
+        const bsModal = bootstrap.Modal.getInstance(modalEl);
+        bsModal && bsModal.hide();
+      }, 1100);
+    });
+  }
+
+  // Artwork modal: file input preview + submit handling
+  const artworkForm = document.querySelector('.artwork-form');
+  const artworkFile = document.getElementById('artwork-file');
+  const artworkLabel = document.querySelector('.file-upload-label .filename');
+  if (artworkFile) {
+    artworkFile.addEventListener('change', (e) => {
+      const f = artworkFile.files && artworkFile.files[0];
+      artworkLabel.textContent = f ? f.name : 'Upload Artwork';
+    });
+  }
+  if (artworkForm) {
+    artworkForm.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      const modalEl = document.getElementById('modal-icon-2');
+      const wrapper = modalEl.querySelector('.form-wrapper');
+      if (wrapper) {
+        wrapper.innerHTML = '<div class="text-center" style="padding:40px 10px;"><h4 style="font-weight:700;">Thanks — Template Request Received</h4><p class="text-muted">We\'ll send the artwork template to your email shortly.</p></div>';
+      }
+      setTimeout(() => {
+        const bsModal = bootstrap.Modal.getInstance(modalEl);
+        bsModal && bsModal.hide();
+      }, 1100);
+    });
+  }
+
+  // Sample order submit handling
+  const sampleForm = document.querySelector('.sample-form');
+  if (sampleForm) {
+    sampleForm.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      const modalEl = document.getElementById('modal-icon-3');
+      const wrapper = modalEl.querySelector('.form-wrapper');
+      if (wrapper) {
+        wrapper.innerHTML = '<div class="text-center" style="padding:40px 10px;"><h4 style="font-weight:700;">Thanks — Sample Order Received</h4><p class="text-muted">We\'ll contact you shortly to arrange your sample.</p></div>';
+      }
+      setTimeout(() => {
+        const bsModal = bootstrap.Modal.getInstance(modalEl);
+        bsModal && bsModal.hide();
+      }, 1100);
+    });
+  }
+
+  // Spec sheet - populate modal with product info and implement download
+  const specModal = document.getElementById('modal-icon-4');
+  function populateSpecModal() {
+    if (!specModal) return;
+    const title = document.querySelector('.product-title')?.textContent || '';
+    const desc = document.querySelector('.product-desc')?.textContent || '';
+    const mainImg = document.querySelector('.main-slider .swiper-slide img')?.src || 'img/product.jpg';
+    const specTitleEl = specModal.querySelector('.spec-title'); if (specTitleEl) specTitleEl.textContent = title;
+    const specDescEl = specModal.querySelector('.spec-desc'); if (specDescEl) specDescEl.textContent = desc;
+    const specImgEl = specModal.querySelector('.spec-image img'); if (specImgEl) specImgEl.src = mainImg;
+
+    // swatches
+    const swatches = document.querySelectorAll('.color-swatches .swatch');
+    const specSw = specModal.querySelector('.spec-swatches'); if (specSw) specSw.innerHTML = '';
+    swatches && swatches.forEach(s => {
+      const span = document.createElement('span');
+      span.style.background = s.dataset.color || window.getComputedStyle(s).backgroundColor;
+      span.title = s.getAttribute('aria-label') || '';
+      specSw && specSw.appendChild(span);
+    });
+
+    // price table
+    const priceTable = document.querySelector('.price-table');
+    const targetPrice = specModal.querySelector('.spec-price-table'); if (targetPrice) targetPrice.innerHTML = priceTable ? priceTable.outerHTML : '';
+
+    // specs
+    const left = document.querySelectorAll('.product-specs .col-md-6')[0];
+    const right = document.querySelectorAll('.product-specs .col-md-6')[1];
+    specModal.querySelector('.spec-specs').innerHTML = left ? left.innerHTML : '';
+    specModal.querySelector('.spec-imprint').innerHTML = right ? right.innerHTML : '';
+
+    // prepare printable content
+    const specPrint = specModal.querySelector('.spec-print');
+    if (specPrint) {
+      specPrint.innerHTML = '<div class="print-content">' + specModal.querySelector('.spec-wrapper').innerHTML + '</div>';
+    }
+  }
+
+  if (specModal) {
+    specModal.addEventListener('show.bs.modal', populateSpecModal);
+  }
+
+  const downloadBtn = document.getElementById('download-spec');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', function () {
+      if (!specModal) return;
+      const content = specModal.querySelector('.spec-print').innerHTML || specModal.querySelector('.spec-wrapper').innerHTML;
+      const win = window.open('', '_blank');
+      const styles = `
+        <style>
+          body{font-family: 'Poppins', Arial, sans-serif; color:#222; padding:28px;}
+          .spec-title{font-weight:800; font-size:22px; margin-bottom:8px;}
+          .spec-desc{color:#666; max-width:540px;}
+          .row{display:flex;gap:20px;}
+          .col{flex:1}
+          img{max-width:100%; height:auto}
+          table{border-collapse:collapse; width:100%; margin-top:12px}
+          th, td{border:1px solid #eee; padding:8px; text-align:left}
+        </style>`;
+      win.document.write(`<html><head><title>Spec Sheet</title>${styles}</head><body>${content}</body></html>`);
+      win.document.close();
+      win.focus();
+      win.print();
+      setTimeout(()=>{ try{ win.close(); } catch(e){} }, 1000);
+    });
+  }
+
 });
