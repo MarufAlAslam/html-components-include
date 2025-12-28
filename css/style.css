@@ -385,9 +385,27 @@ main {
     border-radius: 8px;
 }
 
+.slider-nav-row {
+    position: relative;
+}
+
+.slider-nav-left {
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+}
+
+.slider-nav-right {
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+}
+
 .slider-nav-left,
 .slider-nav-right {
-    width: 44px;
+    min-width: 44px;
     height: 44px;
     border-radius: 50%;
     background: transparent;
@@ -398,6 +416,7 @@ main {
     align-items: center;
     justify-content: center;
     color: #bdd63d !important;
+    position: absolute;
 }
 
 button.btn.btn-sm.thumb-nav-left,
@@ -551,4 +570,17 @@ button.btn.btn-sm.thumb-nav-right {
     .product-icons-band .icon-btn {
         padding: 12px 6px;
     }
+}
+
+/* Breadcrumb link hover: make links green on hover/focus */
+nav[aria-label="breadcrumb"] a {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color .15s ease;
+}
+nav[aria-label="breadcrumb"] a:hover,
+nav[aria-label="breadcrumb"] a:focus {
+    color: var(--accent-2) !important;
+    text-decoration: underline;
+    outline: none;
 }
