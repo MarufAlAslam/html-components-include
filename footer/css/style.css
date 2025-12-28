@@ -564,6 +564,15 @@ div#newsletterModal {
     display: none;
 }
 
+#black-logo {
+    display: none;
+}
+
+.logo-wrapper:hover #main-logo {
+    filter: grayscale(1) brightness(0);
+}
+
+
 
 @media screen and (max-width: 1400px) {
 
