@@ -39,31 +39,31 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="img-wrap">
-                                                <img src="img/product.jpg" alt="slide1" class="slide-img img-fluid" />
+                                                <img src="img/product-variants/black.svg" alt="slide1" class="slide-img img-fluid" />
                                                 <div class="img-tint" aria-hidden="true"></div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="img-wrap">
-                                                <img src="img/product.jpg" alt="slide2" class="slide-img img-fluid" />
+                                                <img src="img/product-variants/blue.svg" alt="slide2" class="slide-img img-fluid" />
                                                 <div class="img-tint" aria-hidden="true"></div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="img-wrap">
-                                                <img src="img/product.jpg" alt="slide3" class="slide-img img-fluid" />
+                                                <img src="img/product-variants/coral.svg" alt="slide3" class="slide-img img-fluid" />
                                                 <div class="img-tint" aria-hidden="true"></div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="img-wrap">
-                                                <img src="img/product.jpg" alt="slide4" class="slide-img img-fluid" />
+                                                <img src="img/product-variants/pink.svg" alt="slide4" class="slide-img img-fluid" />
                                                 <div class="img-tint" aria-hidden="true"></div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="img-wrap">
-                                                <img src="img/product.jpg" alt="slide5" class="slide-img img-fluid" />
+                                                <img src="img/product-variants/grey.svg" alt="slide5" class="slide-img img-fluid" />
                                                 <div class="img-tint" aria-hidden="true"></div>
                                             </div>
                                         </div>
@@ -79,19 +79,19 @@
                                             aria-label="Scroll thumbnails left">‹</button>
                                         <div class="swiper thumb-slider">
                                             <div class="swiper-wrapper">
-                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product.jpg"
+                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product-variants/black.svg"
                                                         alt="thumb1" />
                                                 </div>
-                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product.jpg"
+                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product-variants/blue.svg"
                                                         alt="thumb2" />
                                                 </div>
-                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product.jpg"
+                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product-variants/coral.svg"
                                                         alt="thumb3" />
                                                 </div>
-                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product.jpg"
+                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product-variants/pink.svg"
                                                         alt="thumb4" />
                                                 </div>
-                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product.jpg"
+                                                <div class="swiper-slide thumb" tabindex="0"><img src="img/product-variants/grey.svg"
                                                         alt="thumb5" />
                                                 </div>
                                             </div>
@@ -133,16 +133,21 @@
                             <div class="mb-3">
                                 <div class="text-muted mb-3">Choose Color</div>
                                 <div class="d-flex gap-2 align-items-center color-swatches">
-                                    <button class="swatch active" data-color="#000" style="background:#000"
-                                        aria-label="Black"></button>
-                                    <button class="swatch" data-color="#1e90ff" style="background:#1e90ff"
-                                        aria-label="Blue"></button>
-                                    <button class="swatch" data-color="#ff6b6b" style="background:#ff6b6b"
-                                        aria-label="Coral"></button>
-                                    <button class="swatch" data-color="#ffb6c1" style="background:#ffb6c1"
-                                        aria-label="Pink"></button>
-                                    <button class="swatch" data-color="#bfbfbf" style="background:#bfbfbf"
-                                        aria-label="Grey"></button>
+                                    <button class="swatch active" data-img="img/product-variants/black.svg" aria-label="Black">
+                                        <img src="img/swatch/black.svg" alt="Black" class="swatch-img" />
+                                    </button>
+                                    <button class="swatch" data-img="img/product-variants/blue.svg" aria-label="Blue">
+                                        <img src="img/swatch/blue.svg" alt="Blue" class="swatch-img" />
+                                    </button>
+                                    <button class="swatch" data-img="img/product-variants/coral.svg" aria-label="Coral">
+                                        <img src="img/swatch/coral.svg" alt="Coral" class="swatch-img" />
+                                    </button>
+                                    <button class="swatch" data-img="img/product-variants/pink.svg" aria-label="Pink">
+                                        <img src="img/swatch/pink.svg" alt="Pink" class="swatch-img" />
+                                    </button>
+                                    <button class="swatch" data-img="img/product-variants/grey.svg" aria-label="Grey">
+                                        <img src="img/swatch/grey.svg" alt="Grey" class="swatch-img" />
+                                    </button>
                                 </div>
                             </div>
 
@@ -557,6 +562,26 @@
                         <!-- Hidden printable container used by download -->
                         <div class="spec-print d-none"></div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery modal (opens on big image click) -->
+    <div class="modal fade modal-gallery" id="modal-gallery" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index:4000;"></button>
+                    <div class="modal-inner-wrap">
+                        <div class="gallery-modal-slider">
+                            <div class="modal-swiper-wrapper" style="display:flex; width:100%; height:100%; transition:transform .36s ease;">
+                                <!-- slides populated by JS -->
+                            </div>
+                        </div>
+                        <button class="btn btn-sm slider-modal-prev" aria-label="Prev" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);z-index:3000">‹</button>
+                        <button class="btn btn-sm slider-modal-next" aria-label="Next" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);z-index:3000">›</button>
                     </div>
                 </div>
             </div>

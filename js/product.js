@@ -56,7 +56,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   swatches.forEach(s => {
-    s.addEventListener('click', () => { swatches.forEach(x => x.classList.remove('active')); s.classList.add('active'); applyTint(s.dataset.color || ''); });
+    s.addEventListener('click', () => {
+      swatches.forEach(x => x.classList.remove('active'));
+      s.classList.add('active');
+      applyTint(s.dataset.color || '');
+      // Change first main slider image
+      const imgSrc = s.dataset.img;
+      if (imgSrc) {
+        const firstSlideImg = document.querySelector('.main-slider .swiper-slide:first-child .slide-img');
+        if (firstSlideImg) {
+          firstSlideImg.src = imgSrc;
+        }
+      }
+      // Go to first slide to show the changed image
+      index = 0;
+      update();
+    });
     s.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') s.click(); });
   });
   const active = document.querySelector('.swatch.active'); if (active) applyTint(active.dataset.color || '');

@@ -56,9 +56,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Thumbnails click
   thumbs.forEach((t, i) => {
+    // label thumbs with index to make mapping robust
+    t.dataset.thumbIndex = i;
+    // prevent the main slider pointer handlers from stealing pointerdown on thumbs
+    t.addEventListener('pointerdown', (ev) => { ev.stopPropagation(); });
     t.addEventListener('click', () => { index = i; update(); });
     t.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') { index = i; update(); } });
   });
+
+  // Delegate click on thumb strip to ensure clicks aren't blocked by pointer handlers
+  const thumbStrip = document.querySelector('.thumb-slider');
+  if (thumbStrip) {
+    thumbStrip.addEventListener('click', (e) => {
+      const slideEl = e.target.closest('.thumb-slider .swiper-slide');
+      if (!slideEl) return;
+      const idxAttr = slideEl.dataset.thumbIndex;
+      const i = (typeof idxAttr !== 'undefined') ? parseInt(idxAttr, 10) : Array.from(document.querySelectorAll('.thumb-slider .swiper-slide')).indexOf(slideEl);
+      if (i >= 0) { index = i; update(); }
+    });
+  }
 
   // Thumbnail nav buttons (scroll the strip by a chunk)
   const thumbPrevBtn = document.querySelector('.thumb-nav-left');
@@ -166,7 +182,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   swatches.forEach(s => {
-    s.addEventListener('click', () => { swatches.forEach(x => x.classList.remove('active')); s.classList.add('active'); applyTint(s.dataset.color || ''); });
+    s.addEventListener('click', () => {
+      swatches.forEach(x => x.classList.remove('active'));
+      s.classList.add('active');
+      applyTint(s.dataset.color || '');
+      // If swatch has image for variant, update the first slide and show it
+      const imgSrc = s.dataset.img;
+      if (imgSrc) {
+        const firstSlideImg = document.querySelector('.main-slider .swiper-slide:first-child .slide-img');
+        if (firstSlideImg) firstSlideImg.src = imgSrc;
+      }
+      index = 0; update();
+    });
     s.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') s.click(); });
   });
   const active = document.querySelector('.swatch.active'); if (active) applyTint(active.dataset.color || '');
@@ -214,6 +241,63 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 1100);
     });
   }
+
+  // --- Modal gallery: open large (1200x1200) modal with slider when big image clicked ---
+  const galleryModalEl = document.getElementById('modal-gallery');
+  const galleryWrapper = galleryModalEl && galleryModalEl.querySelector('.modal-swiper-wrapper');
+  const modalPrev = galleryModalEl && galleryModalEl.querySelector('.slider-modal-prev');
+  const modalNext = galleryModalEl && galleryModalEl.querySelector('.slider-modal-next');
+  let modalIndex = 0;
+
+  function populateGalleryModal() {
+    if (!galleryWrapper) return;
+    galleryWrapper.innerHTML = '';
+    slides.forEach((s, idx) => {
+      const img = s.querySelector('.slide-img');
+      const src = img ? img.src : '';
+      const slide = document.createElement('div');
+      slide.className = 'modal-slide';
+      slide.style.boxSizing = 'border-box';
+      // each slide takes an equal portion of the wrapper width so that each appears full-size
+      // keep slides simple — visibility is controlled via the .active class in CSS
+      slide.style.flex = '';
+      slide.style.width = '';
+      slide.style.height = '';
+      slide.innerHTML = `<div class="img-wrap">` + (src ? `<img src="${src}" class="slide-img img-fluid" />` : '') + `</div>`;
+      galleryWrapper.appendChild(slide);
+    });
+    // mark the selected slide active and ensure others are inactive
+    const modalSlides = Array.from(galleryWrapper.querySelectorAll('.modal-slide'));
+    modalSlides.forEach((ms, i) => ms.classList.toggle('active', i === modalIndex));
+  }
+
+  function modalShow() {
+    populateGalleryModal();
+    const bs = new bootstrap.Modal(galleryModalEl);
+    bs.show();
+    // handlers
+    if (modalPrev) modalPrev.onclick = () => {
+      modalIndex = (modalIndex - 1 + slides.length) % slides.length;
+      const modalSlides = Array.from(galleryWrapper.querySelectorAll('.modal-slide'));
+      modalSlides.forEach((ms, i) => ms.classList.toggle('active', i === modalIndex));
+    };
+    if (modalNext) modalNext.onclick = () => {
+      modalIndex = (modalIndex + 1) % slides.length;
+      const modalSlides = Array.from(galleryWrapper.querySelectorAll('.modal-slide'));
+      modalSlides.forEach((ms, i) => ms.classList.toggle('active', i === modalIndex));
+    };
+  }
+
+  // click big image to open modal
+  document.querySelectorAll('.main-slider .swiper-slide .slide-img').forEach((imgEl, i) => {
+    imgEl.style.cursor = 'zoom-in';
+    // Prevent the main container pointerdown from stealing the interaction when clicking the image
+    imgEl.addEventListener('pointerdown', (ev) => { ev.stopPropagation(); });
+    imgEl.addEventListener('click', () => {
+      modalIndex = i;
+      modalShow();
+    });
+  });
 
   // Sample order submit handling
   const sampleForm = document.querySelector('.sample-form');
