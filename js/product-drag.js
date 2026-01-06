@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
       slide.style.flex = '';
       slide.style.width = '';
       slide.style.height = '';
-      slide.innerHTML = `<div class="img-wrap">` + (src ? `<img src="\${src}" class="slide-img img-fluid" />` : '') + `</div>`;
+      slide.innerHTML = `<div class="img-wrap">` + (src ? `<img src="${src}" class="slide-img img-fluid" />` : '') + `</div>`;
       galleryWrapper.appendChild(slide);
     });
     // mark the selected slide active and ensure others are inactive
@@ -305,7 +305,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Prevent the main container pointerdown from stealing the interaction when clicking the image
     imgEl.addEventListener('pointerdown', (ev) => { ev.stopPropagation(); });
     imgEl.addEventListener('click', () => {
-      modalIndex = i;
+      // Use the current slider index, not the DOM index
+      modalIndex = index;
       modalShow();
     });
   });
