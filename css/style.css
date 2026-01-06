@@ -288,30 +288,21 @@ main {
 .main-slider {
     width: 100%;
     overflow: hidden;
-    /* allow vertical page scrolling while disabling horizontal touch scrolling */
-    touch-action: pan-y;
-    cursor: grab;
-}
-
-.main-slider.grabbing {
-    cursor: grabbing;
 }
 
 .main-slider .swiper-wrapper {
     display: flex;
-    width: 100%;
-    transition: transform .36s ease;
-    will-change: transform;
 }
 
 .swiper.thumb-slider .swiper-wrapper {
     display: flex;
-    justify-content: space-around;
     align-items: center;
 }
 
 .main-slider .swiper-slide {
-    flex: 0 0 100%;
+    flex-shrink: 0;
+    width: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -438,11 +429,6 @@ main {
     z-index: 99999; /* ensure arrows always sit above thumbnails */
 }
 
-button.btn.btn-sm.thumb-nav-left,
-button.btn.btn-sm.thumb-nav-right {
-    display: none;
-}
-
 .slider-nav-left:hover,
 .slider-nav-right:hover {
     background: rgba(0, 0, 0, 0.03);
@@ -451,23 +437,36 @@ button.btn.btn-sm.thumb-nav-right {
 .thumb-slider {
     width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    position: relative;
+    z-index: 2300;
+    pointer-events: auto;
 }
 
-/* ensure thumbnails sit above neighboring controls and accept pointer events */
-.thumb-slider { position: relative; z-index: 2300; pointer-events: auto; }
-.slider-nav-row { overflow: visible; }
-.thumb-slider .swiper-wrapper { pointer-events: auto; }
+.thumb-slider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
 
-.thumb-slider .swiper-wrapper {
-    display: flex;
+.slider-nav-row {
+    overflow: hidden;
+    position: relative;
+}
+
+.thumb-slider .swiper-wrapper { 
+    pointer-events: auto;
+    display: inline-flex;
     gap: 10px;
     align-items: center;
-    padding: 6px 2px;
+    padding: 6px 50%; /* Add padding on both sides equal to half container width */
+    white-space: nowrap;
 }
 
 .thumb-slider .swiper-slide {
-    flex: 0 0 auto;
+    flex-shrink: 0;
     width: 80px;
     height: 80px;
     display: inline-flex;
@@ -480,6 +479,7 @@ button.btn.btn-sm.thumb-nav-right {
     padding: 6px;
     cursor: pointer;
     pointer-events: auto;
+    transition: all 0.2s ease;
 }
 
 .modal-slide.active {
@@ -659,4 +659,43 @@ nav[aria-label="breadcrumb"] a:focus {
     color: var(--accent-2) !important;
     text-decoration: underline;
     outline: none;
+}
+
+/* Swiper.js overrides for proper display */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+}
+
+/* Thumbnail slider specific styles */
+.thumb-slider.swiper {
+    height: auto;
+}
+
+.thumb-slider .swiper-slide {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.thumb-slider .swiper-slide-thumb-active {
+    opacity: 1;
+    border: 2px solid var(--accent-2) !important;
 }

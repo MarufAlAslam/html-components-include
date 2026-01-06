@@ -25,9 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!thumbWrap) return;
     const thumb = thumbs[i];
     if (!thumb) return;
-    // Calculate scrollLeft to center the thumb
-    const target = thumb.offsetLeft + (thumb.offsetWidth / 2) - (thumbWrap.clientWidth / 2);
-    thumbWrap.scrollTo({ left: target, behavior: 'smooth' });
+    
+    // Simple centering: scroll so the thumbnail is at the center
+    const scrollPosition = thumb.offsetLeft + (thumb.offsetWidth / 2) - (thumbWrap.clientWidth / 2);
+    thumbWrap.scrollTo({ left: scrollPosition, behavior: 'smooth' });
   }
 
   function update() {
@@ -41,15 +42,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // aria/current
     slides.forEach((s, i) => s.setAttribute('aria-hidden', i === index ? 'false' : 'true'));
 
-    // auto-center active thumbnail
+    // auto-center active thumbnail (always keep it centered)
     scrollThumbsToIndex(index);
   }
 
   function getBaseTranslatePx(i) { return -i * containerWidth; }
 
   // Next / Prev
-  function next() { index = (index + 1) % slides.length; update(); }
-  function prev() { index = (index - 1 + slides.length) % slides.length; update(); }
+  function next() { index = (index + 1) % slides.length; update(); checkAndReset(); }
+  function prev() { index = (index - 1 + slides.length) % slides.length; update(); checkAndReset(); }
 
   nextBtn && nextBtn.addEventListener('click', (e) => { e.preventDefault(); next(); });
   prevBtn && prevBtn.addEventListener('click', (e) => { e.preventDefault(); prev(); });
@@ -60,8 +61,8 @@ document.addEventListener('DOMContentLoaded', function () {
     t.dataset.thumbIndex = i;
     // prevent the main slider pointer handlers from stealing pointerdown on thumbs
     t.addEventListener('pointerdown', (ev) => { ev.stopPropagation(); });
-    t.addEventListener('click', () => { index = i; update(); });
-    t.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') { index = i; update(); } });
+    t.addEventListener('click', () => { index = i; update(); checkAndReset(); });
+    t.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') { index = i; update(); checkAndReset(); } });
   });
 
   // Delegate click on thumb strip to ensure clicks aren't blocked by pointer handlers
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!slideEl) return;
       const idxAttr = slideEl.dataset.thumbIndex;
       const i = (typeof idxAttr !== 'undefined') ? parseInt(idxAttr, 10) : Array.from(document.querySelectorAll('.thumb-slider .swiper-slide')).indexOf(slideEl);
-      if (i >= 0) { index = i; update(); }
+      if (i >= 0) { index = i; update(); checkAndReset(); }
     });
   }
 
@@ -172,31 +173,41 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize
   update();
 
-  /* Swatch tint handling (unchanged behavior) */
+  /* Swatch color handling - jump to first slide and change its image */
   const swatches = Array.from(document.querySelectorAll('.swatch'));
-  function applyTint(color) {
-    const isBlack = !color || color.toLowerCase() === '#000' || color.toLowerCase() === '#000000' || color.toLowerCase() === 'black';
-    document.querySelectorAll('.img-tint').forEach(el => {
-      if (isBlack) { el.style.background = 'transparent'; el.style.opacity = '0'; }
-      else { el.style.background = color; el.style.opacity = '0.28'; }
-    });
-  }
+  const firstSlideImg = document.querySelector('.main-slider .swiper-slide:first-child .slide-img');
+  const originalFirstSlideImg = firstSlideImg ? firstSlideImg.src : '';
+  let isSwatchMode = false; // Track if we're in swatch selection mode
+  
   swatches.forEach(s => {
     s.addEventListener('click', () => {
       swatches.forEach(x => x.classList.remove('active'));
       s.classList.add('active');
-      applyTint(s.dataset.color || '');
-      // If swatch has image for variant, update the first slide and show it
+      
+      // Jump to first slide and change its image
       const imgSrc = s.dataset.img;
-      if (imgSrc) {
-        const firstSlideImg = document.querySelector('.main-slider .swiper-slide:first-child .slide-img');
-        if (firstSlideImg) firstSlideImg.src = imgSrc;
+      if (imgSrc && firstSlideImg) {
+        isSwatchMode = true;
+        firstSlideImg.src = imgSrc;
+        index = 0;
+        update();
       }
-      index = 0; update();
     });
     s.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') s.click(); });
   });
-  const active = document.querySelector('.swatch.active'); if (active) applyTint(active.dataset.color || '');
+  
+  // Reset to original image when user manually navigates away from first slide
+  function checkAndReset() {
+    if (isSwatchMode && index !== 0 && firstSlideImg && originalFirstSlideImg) {
+      firstSlideImg.src = originalFirstSlideImg;
+      isSwatchMode = false;
+      // Reset active swatch to first one
+      swatches.forEach(x => x.classList.remove('active'));
+      if (swatches[0]) {
+        swatches[0].classList.add('active');
+      }
+    }
+  }
 
   // Quote form submit handling (prevent full page submit and show success)
   const quoteForm = document.querySelector('.quote-form');
@@ -263,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
       slide.style.flex = '';
       slide.style.width = '';
       slide.style.height = '';
-      slide.innerHTML = `<div class="img-wrap">` + (src ? `<img src="${src}" class="slide-img img-fluid" />` : '') + `</div>`;
+      slide.innerHTML = `<div class="img-wrap">` + (src ? `<img src="\${src}" class="slide-img img-fluid" />` : '') + `</div>`;
       galleryWrapper.appendChild(slide);
     });
     // mark the selected slide active and ensure others are inactive
@@ -375,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function () {
           table{border-collapse:collapse; width:100%; margin-top:12px}
           th, td{border:1px solid #eee; padding:8px; text-align:left}
         </style>`;
-      win.document.write(`<html><head><title>Spec Sheet</title>${styles}</head><body>${content}</body></html>`);
+      win.document.write(`<html><head><title>Spec Sheet</title>\${styles}</head><body>\${content}</body></html>`);
       win.document.close();
       win.focus();
       win.print();
