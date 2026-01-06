@@ -1175,22 +1175,57 @@ nav[aria-label="breadcrumb"] a:focus {
 }
 
 @media (max-width: 768px) {
-    .tools-nav {
+    .tools-nav-wrapper {
+        padding: 1.5rem 0.5rem 1rem;
+    }
+
+    .tools-navs {
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 1.5rem;
+        justify-content: center;
     }
 
     .tool-item {
-        flex: 0 0 calc(50% - 0.5rem);
-        min-width: auto;
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+
+    .tool-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .tool-label {
+        font-size: 9px;
     }
 
     .tab-content-wrapper {
-        padding: 2rem 1rem;
+        padding: 0;
     }
 
-    .form-container {
+    .form-container,
+    .merch-savvy-container,
+    .sample-request-container,
+    .support-container {
         padding: 2rem 1.5rem;
+    }
+
+    .merch-savvy-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .merch-savvy-form {
+        padding: 1.5rem;
+    }
+
+    .sample-section,
+    .shipping-section {
+        padding: 0.5rem;
+    }
+
+    .section-title {
+        font-size: 16px;
     }
 }
 
