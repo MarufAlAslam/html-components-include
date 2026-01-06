@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributor Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="site-header"></div>
+
+    <div class="py-5" style="background: #f5f5f5; min-height: 80vh;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Tools Navigation -->
+                    <div class="bg-white tools-nav-wrapper">
+                        <div class="tools-navs d-flex justify-content-around align-items-end">
+                            <!-- Tab Icons -->
+                            <button class="tool-item tool-tab active" data-tab="distributor-program">
+                                <div class="tool-icon">
+                                    <img src="img/distributor-icon.png" alt="Distributor Program">
+                                </div>
+                                <div class="tool-label">DISTRIBUTOR PROGRAM</div>
+                            </button>
+                            <button class="tool-item tool-tab" data-tab="merch-savvy">
+                                <div class="tool-icon">
+                                    <img src="img/merch-icon.png" alt="Merch Savvy Program">
+                                </div>
+                                <div class="tool-label">MERCH SAVVY PROGRAM</div>
+                            </button>
+                            <button class="tool-item tool-tab" data-tab="request-quote">
+                                <div class="tool-icon">
+                                    <img src="img/icon-1.png" alt="Request a Quote">
+                                </div>
+                                <div class="tool-label">REQUEST A QUOTE</div>
+                            </button>
+                            <button class="tool-item tool-tab" data-tab="sample-request">
+                                <div class="tool-icon">
+                                    <img src="img/icon-3.png" alt="Sample Request">
+                                </div>
+                                <div class="tool-label">SAMPLE REQUEST</div>
+                            </button>
+                            <button class="tool-item tool-tab" data-tab="artwork-template">
+                                <div class="tool-icon">
+                                    <img src="img/icon-2.png" alt="Artwork Template Request">
+                                </div>
+                                <div class="tool-label">ARTWORK TEMPLATE REQUEST</div>
+                            </button>
+                            <button class="tool-item tool-tab" data-tab="support">
+                                <div class="tool-icon">
+                                    <img src="img/support-icon.png" alt="Support">
+                                </div>
+                                <div class="tool-label">SUPPORT</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content-wrapper">
+                <!-- Distributor Program Tab -->
+                <div class="tab-pane active" id="distributor-program">
+                    <div class="form-container">
+                        <h2 class="form-title">DISTRIBUTOR TOP PROGRAM AND TOOLS</h2>
+                        <p class="form-description mb-4">Get Special Pricing and Discounts With the Idol Memory Partner Program for Distributors<br>
+                        As an Idol Memory partner, we value the crucial day-to-day role that our Distributors fill. Distributors are the faces to customers and as such, they provides the marketing expertise, intelligence and know-how when it comes to advertising and products. The icons above are Distributor resources to enable efficient and effective customer support to customers. If you are not an Idol Memory Distributor, please fill out the form to the right and we will contact you to set you up as distributor.</p>
+                        <form class="distributor-program-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="dist-company-name" class="form-label-small">COMPANY NAME</label>
+                                    <input type="text" id="dist-company-name" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="dist-full-name" class="form-label-small">FULL NAME</label>
+                                    <input type="text" id="dist-full-name" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="dist-email-address" class="form-label-small">EMAIL ADDRESS</label>
+                                    <input type="email" id="dist-email-address" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="dist-phone-number" class="form-label-small">PHONE NUMBER</label>
+                                    <input type="tel" id="dist-phone-number" class="form-control" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="dist-asi-select" class="form-label-small">ASI</label>
+                                    <select id="dist-asi-select" class="form-select">
+                                        <option>Select...</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="dist-asi-number" class="form-label-small">&nbsp;</label>
+                                    <input type="text" id="dist-asi-number" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="dist-street-address" class="form-label-small">STREET ADDRESS</label>
+                                    <input type="text" id="dist-street-address" class="form-control" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="dist-street-address-2" class="form-label-small">STREET ADDRESS 2</label>
+                                    <input type="text" id="dist-street-address-2" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="dist-city" class="form-label-small">CITY</label>
+                                    <input type="text" id="dist-city" class="form-control" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="dist-state" class="form-label-small">STATE</label>
+                                    <input type="text" id="dist-state" class="form-control" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="dist-zip-code" class="form-label-small">ZIP CODE</label>
+                                    <input type="text" id="dist-zip-code" class="form-control" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="dist-revenue" class="form-label-small">REVENUE</label>
+                                    <input type="text" id="dist-revenue" class="form-control" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-submit w-100">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Merch Savvy Program Tab -->
+                <div class="tab-pane" id="merch-savvy">
+                    <div class="merch-savvy-container">
+                        <h2 class="form-title">MERCH SAVVY REWARDS PROGRAM</h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="merch-savvy-content">
+                                    <p class="merch-intro"><strong>Dear Valued Distributors,</strong></p>
+                                    <p>We are thrilled to introduce our plan initiative aimed at enhancing your experience with us—the Idol Memory Merch Savvy Rewards (MSR) Program! As a gesture of gratitude for your continued support and partnership, we have designed this program to offer you fantastic incentives on your next pre-purchase from Idol Memory.</p>
+                                    
+                                    <p><strong>How the MSR Program Works:</strong></p>
+                                    <p><strong>Earn Rebates with Every Purchase:</strong> Enjoy a 5% rebate on every fully-paid order (excluding shipping and late charges). Watch how your rewards grow with each transaction.</p>
+                                    
+                                    <p><strong>Transparent Tracking:</strong> Your rebates will be meticulously recorded in your enclosed company account details by Idol Memory. These records will be reviewed quarterly, providing you with a clear overview of your available and pending rebates.</p>
+                                    
+                                    <p><strong>Seamless Redemption:</strong> Once your rebates are available after a waiting period of 3 months from the order delivery date, you can apply them towards your new purchases. It's a simple way to save on your future orders.</p>
+                                    
+                                    <p><strong>Exclusively for Future Purchases:</strong> While the rebates are non-redeemable as cash, they are a powerful tool to offset costs of your upcoming orders from Idol Memory. Your loyalty is truly rewarded seamlessly.</p>
+                                    
+                                    <p><strong>Inclusivity:</strong> We welcome all eligible distributors to participate in this Merch Savvy Reward Program.</p>
+                                    
+                                    <p><strong>Stay Informed:</strong> To ensure you never miss out on exciting deals and product announcements, we kindly ask you to follow Idol Memory on Facebook and Instagram upon activation of your MSR program. By this that to keep abreast new opportunities to elevate your business!</p>
+                                    
+                                    <p><strong>Eligibility:</strong></p>
+                                    <p><strong>Current Customers:</strong> If your orders from Idol Memory have totaled $30,000 or more within the trailing 12 months (FYTD), you are automatically eligible for the MSR Program. There are no additional annual fees for you to join! We simply need your approval to enroll you in MSR Program.</p>
+                                    
+                                    <p><strong>Bonus for Rebates:</strong> For eligible distributors, we have even more good news! You will receive wholesale rebates to orders made in last 3 months.</p>
+                                    
+                                    <p><strong>New Customers:</strong> New to Idol Memory? When your annual revenue reaches $250,000, you qualify for this program. A nominal annual fee of $150 applies, but the benefits are substantial. Once you have a $10,000 (net-invoice) with Idol Memory after this waiting period, you can start applying your rewards to future orders.</p>
+                                    
+                                    <p><strong>Approval Process:</strong></p>
+                                    <p>The Rebate Program requires approval from your Distributor organization (parent company). Please note that if your organization is already enrolled in an existing rebate program with Idol Memory, this new program might not be available. We recommend checking with your organization's point of contact to explore your options. At Idol Memory, we are dedicated to strengthening our partnerships and wish you success. The MSR Program is a testament to our commitment to your success.</p>
+                                    
+                                    <p>Thank you for being a vital part of the Idol Memory family.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <form class="merch-savvy-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="merch-company-name" class="form-label-small">COMPANY NAME</label>
+                                            <input type="text" id="merch-company-name" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="merch-full-name" class="form-label-small">FULL NAME</label>
+                                            <input type="text" id="merch-full-name" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="merch-email-address" class="form-label-small">EMAIL ADDRESS</label>
+                                            <input type="email" id="merch-email-address" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="merch-phone-number" class="form-label-small">PHONE NUMBER</label>
+                                            <input type="tel" id="merch-phone-number" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="merch-sales-revenue" class="form-label-small">SPECIALTY/SALES REVENUE</label>
+                                            <input type="text" id="merch-sales-revenue" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="merch-asi-select" class="form-label-small">ASI</label>
+                                            <select id="merch-asi-select" class="form-select">
+                                                <option>Select...</option>
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="merch-pin-id" class="form-label-small">PIN/INTERNAL ID</label>
+                                            <input type="text" id="merch-pin-id" class="form-control">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="merch-reseller-id" class="form-label-small">RESELLER ID</label>
+                                            <input type="text" id="merch-reseller-id" class="form-control">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="merch-street-address" class="form-label-small">STREET ADDRESS</label>
+                                            <input type="text" id="merch-street-address" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="merch-street-address-2" class="form-label-small">STREET ADDRESS 2</label>
+                                            <input type="text" id="merch-street-address-2" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="merch-zip-code" class="form-label-small">ZIP CODE</label>
+                                            <input type="text" id="merch-zip-code" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="merch-city" class="form-label-small">CITY</label>
+                                            <input type="text" id="merch-city" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="merch-state" class="form-label-small">STATE</label>
+                                            <input type="text" id="merch-state" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-submit w-100">SUBMIT</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Request a Quote Tab -->
+                <div class="tab-pane" id="request-quote">
+                    <div class="form-container">
+                        <h2 class="form-title">REQUEST A QUOTE</h2>
+                        <form class="quote-request-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="quote-company-name" class="form-label-small">COMPANY NAME</label>
+                                    <input type="text" id="quote-company-name" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-full-name" class="form-label-small">FULL NAME</label>
+                                    <input type="text" id="quote-full-name" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-email-address" class="form-label-small">EMAIL ADDRESS</label>
+                                    <input type="email" id="quote-email-address" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-phone-number" class="form-label-small">PHONE NUMBER</label>
+                                    <input type="tel" id="quote-phone-number" class="form-control" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="quote-asi-select" class="form-label-small">ASI</label>
+                                    <select id="quote-asi-select" class="form-select">
+                                        <option>Select...</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="quote-asi-number" class="form-label-small">&nbsp;</label>
+                                    <input type="text" id="quote-asi-number" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-product" class="form-label-small">PRODUCT</label>
+                                    <input type="text" id="quote-product" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-item-number" class="form-label-small">ITEM NUMBER</label>
+                                    <input type="text" id="quote-item-number" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-quantity" class="form-label-small">QUANTITY</label>
+                                    <input type="number" id="quote-quantity" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-due-date" class="form-label-small">DUE DATE</label>
+                                    <input type="date" id="quote-due-date" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-print-spec" class="form-label-small">PRINT SPEC</label>
+                                    <input type="text" id="quote-print-spec" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quote-currency" class="form-label-small">CURRENCY</label>
+                                    <input type="text" id="quote-currency" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-small">&nbsp;</label>
+                                    <button type="submit" class="btn btn-submit w-100">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sample Request Tab -->
+                <div class="tab-pane" id="sample-request">
+                    <div class="sample-request-container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="sample-section">
+                                    <h3 class="section-title">SAMPLE REQUEST</h3>
+                                    <form class="sample-form">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="sample-company-name" class="form-label-small">COMPANY NAME</label>
+                                                <input type="text" id="sample-company-name" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="sample-full-name" class="form-label-small">FULL NAME</label>
+                                                <input type="text" id="sample-full-name" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="sample-email" class="form-label-small">EMAIL ADDRESS</label>
+                                                <input type="email" id="sample-email" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="sample-phone" class="form-label-small">PHONE NUMBER</label>
+                                                <input type="tel" id="sample-phone" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="sample-asi" class="form-label-small">ASI</label>
+                                                <select id="sample-asi" class="form-select">
+                                                    <option>Select...</option>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label for="sample-asi-number" class="form-label-small">&nbsp;</label>
+                                                <input type="text" id="sample-asi-number" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="sample-product" class="form-label-small">PRODUCT</label>
+                                                <select id="sample-product" class="form-select" required>
+                                                    <option>Select...</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="sample-item-number" class="form-label-small">ITEM NUMBER</label>
+                                                <input type="text" id="sample-item-number" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="sample-quantity" class="form-label-small">QUANTITY</label>
+                                                <input type="number" id="sample-quantity" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="sample-description" class="form-label-small">ADDITIONAL PRODUCT DESCRIPTION OR INSTRUCTION</label>
+                                                <textarea id="sample-description" class="form-control" rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="shipping-section">
+                                    <h3 class="section-title">SHIPPING TO</h3>
+                                    <form class="shipping-form">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="ship-company-name" class="form-label-small">COMPANY NAME</label>
+                                                <input type="text" id="ship-company-name" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="ship-full-name" class="form-label-small">FULL NAME</label>
+                                                <input type="text" id="ship-full-name" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="ship-street-address" class="form-label-small">STREET ADDRESS</label>
+                                                <input type="text" id="ship-street-address" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="ship-street-address-2" class="form-label-small">STREET ADDRESS 2</label>
+                                                <input type="text" id="ship-street-address-2" class="form-control">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="ship-city" class="form-label-small">CITY</label>
+                                                <input type="text" id="ship-city" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="ship-state" class="form-label-small">STATE</label>
+                                                <input type="text" id="ship-state" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="ship-zip-code" class="form-label-small">ZIP CODE</label>
+                                                <input type="text" id="ship-zip-code" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="ship-shipper-number" class="form-label-small">SHIPPER NUMBER</label>
+                                                <input type="text" id="ship-shipper-number" class="form-control">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="ship-billing-zip" class="form-label-small">BILLING ZIP</label>
+                                                <input type="text" id="ship-billing-zip" class="form-control">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="ship-due-date" class="form-label-small">DUE DATE</label>
+                                                <input type="date" id="ship-due-date" class="form-control">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="ship-method" class="form-label-small">SHIPPING METHOD</label>
+                                                <select id="ship-method" class="form-select">
+                                                    <option>Select...</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-submit w-100">SUBMIT</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artwork Template Request Tab -->
+                <div class="tab-pane" id="artwork-template">
+                    <div class="form-container">
+                        <h2 class="form-title">ARTWORK TEMPLATE REQUEST</h2>
+                        <form class="artwork-request-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="company-name" class="form-label-small">COMPANY NAME</label>
+                                    <input type="text" id="company-name" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="full-name" class="form-label-small">FULL NAME</label>
+                                    <input type="text" id="full-name" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email-address" class="form-label-small">EMAIL ADDRESS</label>
+                                    <input type="email" id="email-address" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone-number" class="form-label-small">PHONE NUMBER</label>
+                                    <input type="tel" id="phone-number" class="form-control" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="asi-select" class="form-label-small">ASI</label>
+                                    <select id="asi-select" class="form-select">
+                                        <option>Select...</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="asi-option" class="form-label-small">&nbsp;</label>
+                                    <select id="asi-option" class="form-select">
+                                        <option>Select...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="product" class="form-label-small">PRODUCT</label>
+                                    <input type="text" id="product" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="item-number" class="form-label-small">ITEM NUMBER</label>
+                                    <input type="text" id="item-number" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quantity" class="form-label-small">QUANTITY</label>
+                                    <input type="number" id="quantity" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="due-date" class="form-label-small">DUE DATE</label>
+                                    <input type="date" id="due-date" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="artwork-upload" class="form-label-small">UPLOAD ARTWORK</label>
+                                    <div class="upload-wrapper">
+                                        <input type="file" class="form-control" id="artwork-upload" accept="image/*,.pdf">
+                                        <label for="artwork-upload" class="upload-btn">
+                                            <i class="fas fa-cloud-upload-alt fa-2x"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Support Tab -->
+                <div class="tab-pane" id="support">
+                    <div class="support-container">
+                        <h2 class="support-title">CONTACT US</h2>
+                        <p class="support-subtitle">We're here to help</p>
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <div class="contact-card">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <h3 class="contact-title">CALL US</h3>
+                                    <p class="contact-info">855.688.8899</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-card">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <h3 class="contact-title">EMAIL US</h3>
+                                    <p class="contact-info">info@idolmemory.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="js/include.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tool-tab');
+            const panes = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const targetTab = this.dataset.tab;
+
+                    // Remove active class from all tabs and panes
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panes.forEach(p => p.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding pane
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
